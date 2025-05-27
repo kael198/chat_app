@@ -11,9 +11,29 @@ class ChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      title: "Chat App",
-      theme: ThemeData(primarySwatch: Colors.yellow),
-      home: const ChatPage(),
+      title: 'Chat App',
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
+      home: LoginPage(),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      drawer: Drawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('Button clicked');
+        },
+      ),
+      body: Text('Hello'),
     );
   }
 }
