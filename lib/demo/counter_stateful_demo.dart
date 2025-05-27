@@ -39,11 +39,11 @@ class _CounterStatefulState extends State<CounterStateful> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Counter'),
+          title: Text('Counter!!!'),
         ),
         floatingActionButton: FloatingActionButton(
           //TODO: Provide color from parent
-          child: Icon(Icons.add),
+          child: Icon(Icons.message),
           onPressed: () {
             increment();
           },
