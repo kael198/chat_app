@@ -1,7 +1,7 @@
 import 'package:chat_app/utils/spaces.dart';
-import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -23,6 +23,8 @@ class LoginPage extends StatelessWidget {
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final _mainUrl = "https://poojabhaumik.com";
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,6 @@ class LoginPage extends StatelessWidget {
                     fontSize: 20,
                     color: Colors.blueGrey),
               ),
-              //TODO: Add correct asset file
               Image.asset(
                 'assets/illustration.png',
                 height: 200,
@@ -93,14 +94,16 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
                   )),
               GestureDetector(
-                onTap: () {
-                  //todo: Navigate to browser
+                onTap: () async {
                   print('Link clicked!');
+                  if (!await launch(_mainUrl)) {
+                    throw 'Could not launch this!';
+                  }
                 },
                 child: Column(
                   children: [
                     Text('Find us on'),
-                    Text('https://poojabhaumik.com'),
+                    Text(_mainUrl),
                   ],
                 ),
               )
