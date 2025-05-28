@@ -1,49 +1,34 @@
 import 'package:flutter/material.dart';
 
 class CounterStateful extends StatefulWidget {
-  const CounterStateful({Key? key}) : super(key: key);
+  //Widget variables should be final
+  final Color buttonColor;
+
+  CounterStateful({Key? key, required this.buttonColor}) : super(key: key);
 
   @override
-  State<CounterStateful> createState() {
-    State<CounterStateful> stateClassAssociatedWithThisWidget =
-        _CounterStatefulState();
-    return stateClassAssociatedWithThisWidget;
-  }
+  State<CounterStateful> createState() => _CounterStatefulState();
 }
 
 class _CounterStatefulState extends State<CounterStateful> {
   int counter = 0;
 
   void increment() {
-    if (mounted) {
-      setState(() {
-        counter++;
-      });
-    }
+    setState(() {
+      counter++;
+    });
     print(counter);
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Counter!!!'),
+          title: Text('Counter'),
         ),
         floatingActionButton: FloatingActionButton(
-          //TODO: Provide color from parent
-          child: Icon(Icons.message),
+          backgroundColor: widget.buttonColor,
+          child: Icon(Icons.add),
           onPressed: () {
             increment();
           },
