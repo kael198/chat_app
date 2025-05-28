@@ -18,21 +18,19 @@ class _ChatPageState extends State<ChatPage> {
   List<ChatMessageEntity> _messages = [];
 
   _loadInitialMessages() async {
-    rootBundle.loadString('assets/mock_messages.json').then((response) {
-      final List<dynamic> decodedList = jsonDecode(response) as List;
+    final response = await rootBundle.loadString('assets/mock_messages.json');
 
-      final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
-        return ChatMessageEntity.fromJson(listItem);
-      }).toList();
+    final List<dynamic> decodedList = jsonDecode(response) as List;
 
-      print(_chatMessages.length);
+    final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
+      return ChatMessageEntity.fromJson(listItem);
+    }).toList();
 
-      //final state of the messages
-      setState(() {
-        _messages = _chatMessages;
-      });
-    }).then((_) {
-      print('done');
+    print(_chatMessages.length);
+
+    //final state of the messages
+    setState(() {
+      _messages = _chatMessages;
     });
   }
 
